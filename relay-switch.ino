@@ -337,7 +337,7 @@ void loop() {
     }
   } else if ( heartbeat_timeout == HEARTBEAT_TIMEOUT ) {
 
-    // We haven't heard from the server for long enough; turn off relays to save power
+    // We haven't heard from server for long enough; turn off relays to save power
     fan_relay->isOn( false );
     light_relay->isOn( false );
 
@@ -402,7 +402,7 @@ void loop() {
 
   // Handle switches
   if ( MASTER ) {
-    if ( fan_switch->isFlipped() || light_switch->isFlipper() ) {
+    if ( fan_switch->isFlipped() || light_switch->isFlipped() ) {
 
       // MASTER updates internal state and tells clients to SYNC to new state.
       packet.device_id = device_id;
