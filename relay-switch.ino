@@ -184,9 +184,9 @@ packet_t packet;
 
 // Variables for radio
 #ifdef PRO_MINI
-RF24 radio( 2, 3 );
+RF24 radio( 9, 10 );
 #elif MICRO
-RF24 radio( 8, 9 );
+RF24 radio( 2, 3 );
 #endif
 const uint64_t pipes[2] = { 0xe7e7e7e7e7LL, 0xc2c2c2c2c2LL };
 
@@ -371,7 +371,6 @@ void loop() {
         packet.seq_num = seq_num++;
         packet.type = SYNC;
         packet.fan = fan_relay->toggle();
-        packet.light = light_relay->toggle();
 
         xmitPacket();
 
@@ -381,7 +380,6 @@ void loop() {
         packet.device_id = device_id;
         packet.seq_num = seq_num++;
         packet.type = SYNC;
-        packet.fan = fan_relay->toggle();
         packet.light = light_relay->toggle();
 
         xmitPacket();
