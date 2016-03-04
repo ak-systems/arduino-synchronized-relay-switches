@@ -3,6 +3,9 @@
 #include <SPI.h>
 #include <RF24.h>
 
+#define PRO_MINI
+// #define MICRO
+
 /*
  * Set the following to 1 to run debug logic and output debug information to the
  * serial output.
@@ -180,7 +183,11 @@ device_t * devices;
 packet_t packet;
 
 // Variables for radio
-RF24 radio( 2, 3 );  // TODO: CONFIRM RF24( 2, 3 ) IS CORRECT
+#ifdef PRO_MINI
+RF24 radio( 2, 3 );
+#elif MICRO
+RF24 radio( 8, 9 );
+#endif
 const uint64_t pipes[2] = { 0xe7e7e7e7e7LL, 0xc2c2c2c2c2LL };
 
 /* -------------------------------------------------------------------------- */
