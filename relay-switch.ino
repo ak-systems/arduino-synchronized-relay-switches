@@ -221,8 +221,10 @@ inline void printPacket() {
   PRINTLN( packet.seq_num );
   PRINT( "type: " );
   PRINTLN( packet.type );
-  PRINT( "locked: " );
-  PRINTLN( packet.locked );
+  PRINT( "fan: " );
+  PRINTLN( packet.fan );
+  PRINT( "light: " );
+  PRINTLN( packet.light );
 }
 
 inline void xmitPacket() {
