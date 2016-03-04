@@ -415,8 +415,8 @@ void loop() {
       packet.device_id = device_id;
       packet.seq_num = seq_num++;
       packet.type = SYNC;
-      packet.fan = fan_relay->toggle();
-      packet.light = light_relay->toggle();
+      packet.fan = fan_switch->isFlipped() ? fan_relay->toggle() : fan_relay->isOn();
+      packet.light = light_switch->isFlipped() ? light_relay->toggle() : light_relay->isOn();
 
       xmitPacket();
 
