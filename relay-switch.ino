@@ -333,7 +333,7 @@ void loop() {
       heartbeat--;
     } else {
 
-      TRACE( PRINT( "Sending heartbeat sync." ); );
+      TRACE( PRINTLN( "Sending heartbeat sync." ); );
 
       // Send heartbeat sync packet
       packet.device_id = device_id;
