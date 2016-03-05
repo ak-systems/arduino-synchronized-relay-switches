@@ -311,8 +311,12 @@ void setup() {
   // Configure RF24 radio
   radio.begin();
   radio.setChannel( RADIO_CHANNEL );
-//  radio.setPayloadSize( sizeof( packet_t ) );  // TODO: IS THIS NEEDED?
-//  radio.setCRCLength( RF24_CRC_8 );            // TODO: IS THIS NEEDED?
+  radio.setAutoAck( 1 );
+  radio.setRetries( 5, 10 );
+  radio.setPayloadSize( sizeof( packet_t ) );
+  radio.setCRCLength( RF24_CRC_8 );
+  radio.setDataRate( RF24_250KBPS );
+  radio.setPALevel( RF24_PA_MAX );
   radio.openWritingPipe( pipes[ 0 ] );
   radio.openReadingPipe( 1, pipes[ 1 ] );
   radio.startListening();
